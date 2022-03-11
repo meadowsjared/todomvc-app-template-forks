@@ -53,5 +53,11 @@
 </template>
 
 <script setup lang="ts">
-console.log("hello from app.vue")
+import type Todo from "./domain/Todo"
+const todoArray: Todo[] = [
+	{checked: true, message: "Eat Food"},
+	{checked: false, message: "Travel to Candy Mountain Charley"},
+]
+let asdf=[1,2,3]
+console.log("hello from app.vue", todoArray)
 </script>
