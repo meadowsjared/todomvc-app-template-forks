@@ -49,8 +49,15 @@
 				<button class="clear-completed">Clear completed</button>
 			</footer>
 		</section>
+
 </template>
 
 <script setup lang="ts">
-console.log("Heyo")
+import type Todo from "./domain/Todo"
+const todoArray: Todo[] = [
+	{checked: true, message: "Eat Food"},
+	{checked: false, message: "Travel to Candy Mountain Charley"},
+]
+let asdf=[1,2,3]
+console.log("Hey hey! You bastage", todoArray)
 </script>
