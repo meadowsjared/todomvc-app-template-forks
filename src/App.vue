@@ -47,17 +47,5 @@ const todoArray: Todo[] = [
   { checked: false, message: "Changed", id: 3 },
 
 ];
-let asdf = [1, 2, 3];
-console.log("Hey hey! You bastage", todoArray);
-
-if (asdf.length == 2){
-	console.log("Five is right out!")
-}else {
-	console.log("Three Sir!")
-}
-
-asdf.forEach((flip) => {
-	console.log("output", flip)
-})
 
 </script>
