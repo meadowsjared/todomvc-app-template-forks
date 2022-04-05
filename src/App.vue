@@ -12,7 +12,7 @@
         <!-- These are here just to show the structure of the list items -->
         <!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
 
-        <Todo v-for="(todo,index) of todoArray" :key="index" :todo="todo"/>
+        <Todo v-for="(todo) of todoArray" :key="todo.id" :todo="todo"/>
       </ul>
     </section>
     <!-- This footer should be hidden by default and shown when there are todos -->
@@ -41,12 +41,23 @@
 <script setup lang="ts">
 import type Todo from "./domain/Todo";
 const todoArray: Todo[] = [
-  { checked: false, message: "Eat Food" },
-  { checked: false, message: "Travel to Candy Mountain Charley" },
-  { checked: false, message: "It could be anything"},
-  { checked: false, message: "Changed"},
+  { checked: false, message: "Eat Food", id: 0 },
+  { checked: false, message: "Travel to Candy Mountain Charley", id: 1 },
+  { checked: false, message: "It could be anything", id: 2 },
+  { checked: false, message: "Changed", id: 3 },
 
 ];
 let asdf = [1, 2, 3];
 console.log("Hey hey! You bastage", todoArray);
+
+if (asdf.length == 2){
+	console.log("Five is right out!")
+}else {
+	console.log("Three Sir!")
+}
+
+asdf.forEach((flip) => {
+	console.log("output", flip)
+})
+
 </script>
