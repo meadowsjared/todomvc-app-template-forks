@@ -1,5 +1,4 @@
 /*
-
 {} = Object
 
 "" = Sting (Generally on property, many times with actual words inside)

@@ -23,7 +23,7 @@
     <!-- This footer should be hidden by default and shown when there are todos -->
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
-      <span class="todo-count"><strong>0</strong> item left</span>
+      <span class="todo-count"><strong>{{tasksLeft}}</strong> item left</span>
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
         <li>
@@ -46,6 +46,11 @@
 <script setup lang="ts">
 import type {Ref} from "vue"
 import type Todo from "./domain/Todo";
+
+const tasksLeft = computed(
+	() => todoArray.value.filter((todo) => !todo.checked).length
+);
+
 const todoArray: Ref<Todo[]> = ref([
   { checked: false, message: "Eat Food", id: 0 },
   { checked: true, message: "Travel to Candy Mountain Charley", id: 1 },
