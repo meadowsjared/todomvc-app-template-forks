@@ -47,16 +47,26 @@
 import type {Ref} from "vue"
 import type Todo from "./domain/Todo";
 
-const tasksLeft = computed(
-	() => todoArray.value.filter((todo) => !todo.checked).length
-);
-
 const todoArray: Ref<Todo[]> = ref([
   { checked: false, message: "Eat Food", id: 0 },
   { checked: true, message: "Travel to Candy Mountain Charley", id: 1 },
   { checked: false, message: "It could be anything", id: 2 },
   { checked: false, message: "Changed", id: 3 },
+	{ checked: true, message: "BAH HUMBUG", id: 4 },
 ]);
+
+//updates the tasks left from being checked
+const tasksLeft = computed(
+	() => todoArray.value.filter((todo) => !todo.checked).length
+);
+
+//watches as tasks become checked
+watch(
+	() => tasksLeft.value,
+	() => {
+		console.log("tasksLeft changed");
+	}
+);
 
 function destroyTodo(index: number) {
   console.log("BURNINATE...ing!", index);
