@@ -30,7 +30,7 @@ function toggleChecked() {
 }
 
 function destroy() {
-	console.log("destroy", props.modelValue.id)
-	emit("destroyTodo")
+  console.log("destroy", props.modelValue.id);
+  emit("destroyTodo");
 }
 </script>
