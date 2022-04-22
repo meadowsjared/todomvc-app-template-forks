@@ -56,5 +56,32 @@ asdf.forEach((flip) => {
 
 
 
+Bandayd code stuffs:
+for future reference the 4 pieces you need for a good v-model is:
+on the instance of the component set the param ofc:
+v-model="myVariable"
+optionally you can use
+@update:modelValue="handleModelValue"
+to trigger when the value updates from the parent
+then in the component add the prop
+const props = defineProps({
+    modelValue: { type: Array as PropType<string[]>, default: [] as Array<string> },
+});
+
+then in the component that uses v-model
+const emit = defineEmits(["update:modelValue"]);
+then in that same component, you need to fire the update with:
+emit("update:modelValue", newVmodelValue)
+
+Simple Example of text box variable interaction:
+<input type="text" v-model="name"/>
+	Hello, my name is {{name}}
+const name = ref("Cory")
+
+:class="{ completed: checked }" == Add completed property to class based on checked value
+CSS = how you define how everything looks/"acts"
+
+const numbers: number[] = [1, 6, 4, 3, 23, 45, 76]; ==
+const numbers: Array<number> = [1, 6, 4, 3, 23, 45, 76];
 
 */
