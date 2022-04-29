@@ -23,7 +23,7 @@
     <footer class="footer">
       <!-- This should be `0 items left` by default -->
       <span class="todo-count"
-        ><strong>{{ tasksLeft }}</strong> item left</span
+        ><strong>{{ tasksLeft }}</strong> item{{tasksLeft === 1 ? "" : "s" }} left</span
       >
       <!-- Remove this if you don't implement routing -->
       <ul class="filters">
@@ -59,7 +59,7 @@ let name = "DayCHU";
 let asdf = [1, 2, 3];
 
 const tasksLeft = computed(
-  () => todoArray.value.filter((todo) => !todo.checked).length
+  () => todoArray.value.filter((todo) => !todo.checked).length ?? 0
 );
 
 watch(
