@@ -7,7 +7,8 @@
 				v-model="props.modelValue.checked"
 				@update:modelValue="toggleChecked"
 			/>
-			<label>{{ props.modelValue.message }}</label>
+			<label></label>
+			<input type="text" v-model="message" />
 			<button class="destroy" @click="destroy"></button>
 		</div>
 		<input class="edit" value="Create a TodoMVC template" />
@@ -19,8 +20,22 @@ import type Todo from "../domain/Todo";
 const props = defineProps({
 	modelValue: { type: Object as PropType<Todo>, required: true },
 });
+
 const emit = defineEmits(["update:modelValue", "destroyTodo"]);
+
 const checked = ref(props.modelValue.checked);
+const message = ref(props.modelValue.message);
+
+watch(
+	() => message.value,
+	(newMessage) => {
+		console.log("newMessage", newMessage);
+		const newValue = props.modelValue;
+		newValue.message = newMessage;
+		emit("update:modelValue", newValue);
+	}
+);
+
 function toggleChecked() {
 	console.log("toggleChecked", props.modelValue.checked);
 	const newValue = props.modelValue;
