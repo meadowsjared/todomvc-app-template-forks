@@ -14,8 +14,9 @@ export const useTodoStore = defineStore("todos", {
 		],
 	}),
 	getters: {
-		todos: (state) => state._todos,
-		tasksLeft: (state) => state._todos.filter((todo) => !todo.checked).length,
+		todos: (state: State) => state._todos,
+		tasksLeft: (state: State) =>
+			state._todos.filter((todo) => !todo.checked).length,
 	},
 	actions: {
 		destroyTodo(index: number) {
