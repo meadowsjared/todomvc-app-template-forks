@@ -2,28 +2,64 @@ import { defineStore } from "pinia";
 import type Todo from "../domain/Todo";
 
 interface State {
-	_todos: Todo[];
+	_sourceTodos: Todo[];
+	_displayedTodos: Todo[];
+	_filter: string;
 }
 
 export const useTodoStore = defineStore("todos", {
 	state: (): State => ({
-		_todos: [
-			{ checked: true, message: "Eat Food", id: 0 },
-			{ checked: true, message: "Look at Noteworthy Trees", id: 1 },
-			{ checked: false, message: "Sleep at a REASONABLE Hour", id: 2 },
+		_sourceTodos: [
+			{ checked: true, message: "Eat Food", id: 0, active: true },
+			{
+				checked: true,
+				message: "Look at Noteworthy Trees",
+				id: 1,
+				active: true,
+			},
+			{
+				checked: false,
+				message: "Sleep at a REASONABLE Hour",
+				id: 2,
+				active: true,
+			},
 		],
+		_displayedTodos: [],
+		_filter: "all",
 	}),
 	getters: {
-		todos: (state: State) => state._todos,
+		todos: (state: State) => {
+			switch (state._filter) {
+				case "active":
+					return state._displayedTodos.filter((todo) => todo.active);
+				case "completed":
+					return state._displayedTodos.filter((todo) => todo.checked);
+				default:
+					return state._displayedTodos;
+			}
+		},
 		tasksLeft: (state: State) =>
-			state._todos.filter((todo) => !todo.checked).length,
+			state._sourceTodos.filter((todo) => !todo.checked).length,
+		filter: (state: State) => state._filter,
 	},
 	actions: {
-		destroyTodo(index: number) {
-			this._todos.splice(index, 1);
+		destroyTodo(todo: Todo) {
+			todo.active = false;
+			// this._displayedTodos[index].active = false;
+			// this._displayedTodos.splice(index, 1);
 		},
 		clearCompleted() {
-			this._todos = this._todos.filter((todo) => !todo.checked);
+			this._displayedTodos
+				.filter((todo) => todo.checked)
+				.forEach((todo) => {
+					todo.active = false;
+				});
+		},
+		loadData() {
+			this._displayedTodos = this._sourceTodos;
+		},
+		setFilter(filter: string) {
+			this._filter = filter;
 		},
 	},
 });

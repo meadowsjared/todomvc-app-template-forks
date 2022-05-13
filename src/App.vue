@@ -15,7 +15,7 @@
 					v-for="(todo, index) of todoStore.todos"
 					:key="todo.id"
 					v-model="todoStore.todos[index]"
-					@destroy-todo="destroyTodo(index)"
+					@destroy-todo="destroyTodo(todo)"
 				/>
 			</ul>
 		</section>
@@ -31,13 +31,36 @@
 			<!-- Remove this if you don't implement routing -->
 			<ul class="filters">
 				<li>
-					<a class="selected" href="#/">All</a>
+					<!-- <a
+						:class="{ selected: todoStore.filter === 'all' }"
+						@click="showAll"
+						href="#/"
+						>All</a
+					> -->
+					<Button
+						@click="setFilter"
+						:filter="todoStore.filter"
+						label="All"
+						active-value="all"
+					/>
 				</li>
 				<li>
-					<a href="#/active">Active</a>
+					<!-- <a @click="showActive" href="#/active">Active</a> -->
+					<Button
+						@click="setFilter"
+						:filter="todoStore.filter"
+						label="Active"
+						active-value="active"
+					/>
 				</li>
 				<li>
-					<a href="#/completed">Completed</a>
+					<!-- <a @click="showCompleted" href="#/completed">Completed</a> -->
+					<Button
+						@click="setFilter"
+						:filter="todoStore.filter"
+						label="Completed"
+						active-value="completed"
+					/>
 				</li>
 			</ul>
 			<!-- Hidden if no completed items are left ↓ -->
@@ -55,6 +78,7 @@ import type Todo from "./domain/Todo";
 import { useTodoStore } from "./stores/todo-store";
 
 const todoStore = useTodoStore();
+todoStore.loadData();
 todoStore.tasksLeft;
 let name = "DayCHU";
 let asdf = [1, 2, 3];
@@ -74,14 +98,29 @@ function showChecked() {
 	console.log("showChecked");
 }
 
-function destroyTodo(index: number) {
-	todoStore.destroyTodo(index);
-	console.log("destroyTodo from parent", index);
+function destroyTodo(todo: Todo) {
+	todoStore.destroyTodo(todo);
+	console.log("destroyTodo from parent", todo);
 }
 
 function clearCompleted() {
 	todoStore.clearCompleted();
 }
 
+function showAll() {
+	console.log("showAll");
+	todoStore.setFilter("all");
+}
+function showActive() {
+	console.log("showActive");
+	todoStore.setFilter("active");
+}
+function showCompleted() {
+	console.log("showCompleted");
+	todoStore.setFilter("completed");
+}
+function setFilter(filter: string) {
+	todoStore.setFilter(filter);
+}
 console.log("hello from app.vue", todoStore.todos);
 </script>
