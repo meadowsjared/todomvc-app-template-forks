@@ -6,3 +6,14 @@ remove this comment if used
 remove this file if not
 
 */
+
+
+.todo-list li.completed label > input {
+    color: #949494;
+    text-decoration: line-through;
+}
+
+input {
+	border: none;
+	font-size: 24px;
+}

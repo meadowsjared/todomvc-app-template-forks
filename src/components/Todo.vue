@@ -7,8 +7,7 @@
 				v-model="props.modelValue.checked"
 				@update:modelValue="toggleChecked"
 			/>
-			<label></label>
-			<input type="text" v-model="message" />
+			<label> <input type="text" v-model="message" /> </label>
 			<button class="destroy" @click="destroy"></button>
 		</div>
 		<input class="edit" value="Create a TodoMVC template" />
