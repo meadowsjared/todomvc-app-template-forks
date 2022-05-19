@@ -24,7 +24,10 @@
 		<footer class="footer">
 			<!-- This should be `0 items left` by default -->
 			<span class="todo-count"
-				><strong>{{ todoStore.tasksLeft }}</strong> item left</span
+				><strong>{{ todoStore.tasksLeft }}</strong> item{{
+					todoStore.tasksLeft === 1 ? "" : "s"
+				}}
+				left</span
 			>
 			<!-- Remove this if you don't implement routing -->
 			<ul class="filters">
