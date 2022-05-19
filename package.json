@@ -4,6 +4,7 @@
   },
   "private": true,
   "dependencies": {
+    "pinia": "^2.0.14",
     "todomvc-app-css": "^2.0.0",
     "todomvc-common": "^1.0.0",
     "vue": "^3.2.31"
