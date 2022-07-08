@@ -56,6 +56,13 @@ asdf.forEach((flip) => {
 	console.log("output", flip)
 })
 
+User Input Emit/Event:
+@click/</could be focus or other input//="$emit('click', activeValue//represents string//)"
+
+defineEmits<{
+	(event: 'click', value: string): void/</no return value//;
+}>();
+
 
 
 Bandayd code stuffs:
@@ -68,7 +75,25 @@ to trigger when the value updates from the parent
 then in the component add the prop
 const props = defineProps({
     modelValue: { type: Array as PropType<string[]>, default: [] as Array<string> },
-});
+});   -old way
+V
+V
+New Better Way for ^^^
+Examp1 defineProps<{
+				"modelValue": string;
+			}>();
+Examp2 defineProps<{
+				property1: string;
+				property2: string;
+				property3: string;
+			}>();
+
+
+defineProps<{
+	modelValue: string;//property1
+	property2: string;
+	property3: string;
+}>();
 
 then in the component that uses v-model
 const emit = defineEmits(["update:modelValue"]);

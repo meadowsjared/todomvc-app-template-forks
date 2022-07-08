@@ -32,13 +32,28 @@
 			<!-- Remove this if you don't implement routing -->
 			<ul class="filters">
 				<li>
-					<a class="selected" href="#/">All</a>
+					<Button
+						@click="setFilter"
+						label="ALL STUFF"
+						active-value="all"
+						:filter="todoStore.filter"
+					/>
 				</li>
 				<li>
-					<a href="#/active">Active</a>
+					<Button
+						@click="setFilter"
+						label="Doing"
+						active-value="active"
+						:filter="todoStore.filter"
+					/>
 				</li>
 				<li>
-					<a href="#/completed">Completed</a>
+					<Button
+						@click="setFilter"
+						label="Done"
+						active-value="completed"
+						:filter="todoStore.filter"
+					/>
 				</li>
 			</ul>
 			<!-- Hidden if no completed items are left ↓ -->
