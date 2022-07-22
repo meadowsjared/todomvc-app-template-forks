@@ -16,7 +16,7 @@
 
 <script setup lang="ts">
 import type { PropType } from "vue";
-import type Todo from "../domain/Todo";
+import type { Todo } from "../domain/Todo";
 
 const emit = defineEmits(["update:modelValue", "destroyTodo"]);
 

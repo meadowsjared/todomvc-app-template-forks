@@ -1,4 +1,4 @@
-export default interface Todo {
+export interface Todo {
 	// Required
 	checked: boolean;
 	message: string;
@@ -6,4 +6,9 @@ export default interface Todo {
 	// Optional
 	foo?: boolean;
 	active: boolean;
+}
+export enum SortState {
+	UNSORTED,
+	ASCENDING,
+	DESCENDING,
 }
