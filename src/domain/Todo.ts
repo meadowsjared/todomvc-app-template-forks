@@ -7,3 +7,8 @@ export default interface Todo {
 	//optional
 	foo?: boolean;
 }
+export enum SortState {
+	UNSORTED,
+	ASCENDING,
+	DESCENDING,
+}

@@ -7,7 +7,7 @@
 		<!-- This section should be hidden by default and shown when there are todos -->
 		<section class="main">
 			<input id="toggle-all" class="toggle-all" type="checkbox" />
-			<label for="toggle-all">Mark all as complete</label>
+			<label @click="sortTodos" for="sort-todos"> Sort Todos</label>
 			<ul class="todo-list">
 				<!-- These are here just to show the structure of the list items -->
 				<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
@@ -75,6 +75,7 @@
 <script setup lang="ts">
 import type { Ref } from "vue";
 import type Todo from "./domain/Todo";
+import { SortState } from "./domain/Todo";
 import { useTodoStore } from "./stores/todo-store";
 
 const todoStore = useTodoStore();
@@ -83,6 +84,7 @@ todoStore.tasksLeft;
 let name = "DayCHU";
 let asdf = [1, 2, 3];
 
+const sortState = ref<SortState>(SortState.UNSORTED);
 // const tasksLeft = computed(
 // 	() => todoArray.value.filter((todo) => !todo.checked).length ?? 0
 // );
@@ -121,6 +123,11 @@ function showCompleted() {
 }
 function setFilter(filter: string) {
 	todoStore.setFilter(filter);
+}
+function sortTodos() {
+	sortState.value = (sortState.value + 1) % 3;
+	console.log("sortTodos", sortState.value);
+	todoStore.setSort(sortState.value);
 }
 console.log("hello from app.vue", todoStore.todos);
 </script>
