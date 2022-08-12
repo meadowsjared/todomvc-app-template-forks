@@ -9,7 +9,11 @@ interface State {
 	_sort: SortState;
 }
 
-function sortTodos() {}
+function sortTodos(a: Todo, b: Todo) {
+	if (a.checked === b.checked) return 0;
+	if (a.checked) return -1;
+	return 1;
+}
 
 export const useTodoStore = defineStore("todos", {
 	state: (): State => ({
