@@ -9,16 +9,27 @@ interface State {
 	_sort: SortState;
 }
 
-function sortTodos(a: Todo, b: Todo) {
-	if (a.checked === b.checked) return 0;
-	if (a.checked) return -1;
-	return 1;
+function sortTodos(a: Todo, b: Todo, sortState: SortState) {
+	switch (sortState) {
+		case SortState.ASCENDING:
+			if (a.checked === b.checked) return 0;
+			if (a.checked) return 1;
+			return -1;
+		case SortState.DESCENDING:
+			if (a.checked === b.checked) return 0;
+			if (a.checked) return -1;
+			return 1;
+		case SortState.UNSORTED:
+			if (a.id === b.id) return 0;
+			if (a.id > b.id) return 1;
+			return -1;
+	}
 }
 
 export const useTodoStore = defineStore("todos", {
 	state: (): State => ({
 		_sourceTodos: [
-			{ checked: true, message: "Eat Food", id: 0, active: true },
+			{ checked: false, message: "Eat Food", id: 0, active: true },
 			{
 				checked: true,
 				message: "Look at Noteworthy Trees",
@@ -38,14 +49,17 @@ export const useTodoStore = defineStore("todos", {
 	}),
 	getters: {
 		todos: (state: State) => {
-			const sortedTodos = state._displayedTodos.sort(sortTodos);
+			//sort the results
+			const sortedTodos = state._displayedTodos;
+			sortedTodos.sort((a: Todo, b: Todo) => sortTodos(a, b, state._sort));
+			//filter the results
 			switch (state._filter) {
 				case "active":
-					return state._displayedTodos.filter((todo) => todo.active);
+					return sortedTodos.filter((todo) => todo.active);
 				case "completed":
-					return state._displayedTodos.filter((todo) => todo.checked);
+					return sortedTodos.filter((todo) => todo.checked);
 				default:
-					return state._displayedTodos;
+					return sortedTodos;
 			}
 		},
 		tasksLeft: (state: State) =>
