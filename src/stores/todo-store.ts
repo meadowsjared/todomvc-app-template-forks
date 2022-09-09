@@ -63,7 +63,7 @@ export const useTodoStore = defineStore("todos", {
 			}
 		},
 		tasksLeft: (state: State) =>
-			state._sourceTodos.filter((todo) => !todo.checked).length,
+			state._displayedTodos.filter((todo) => !todo.checked).length,
 		filter: (state: State) => state._filter,
 	},
 	actions: {
@@ -87,6 +87,12 @@ export const useTodoStore = defineStore("todos", {
 		},
 		setSort(sortState: SortState) {
 			this._sort = sortState;
+		},
+		updateTodo(newTodo: Todo) {
+			const index = this._displayedTodos.findIndex(
+				(pTodo) => newTodo.id === pTodo.id
+			);
+			this._displayedTodos[index] = newTodo;
 		},
 	},
 });
