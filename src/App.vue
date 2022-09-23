@@ -44,27 +44,24 @@
 					> -->
 					<Button
 						@click="setFilter"
-						:filter="todoStore.filter"
-						label="All"
-						active-value="all"
+						:active="'all' === todoStore.filter"
+						:label="{ displayText: 'All', value: 'all' }"
 					/>
 				</li>
 				<li>
 					<!-- <a @click="showActive" href="#/active">Active</a> -->
 					<Button
 						@click="setFilter"
-						:filter="todoStore.filter"
-						label="Active"
-						active-value="active"
+						:active="'unchecked' === todoStore.filter"
+						:label="{ displayText: 'Unchecked', value: 'unchecked' }"
 					/>
 				</li>
 				<li>
 					<!-- <a @click="showCompleted" href="#/completed">Completed</a> -->
 					<Button
 						@click="setFilter"
-						:filter="todoStore.filter"
-						label="Completed"
-						active-value="completed"
+						:active="'checked' === todoStore.filter"
+						:label="{ displayText: 'Checked', value: 'checked' }"
 					/>
 				</li>
 			</ul>
