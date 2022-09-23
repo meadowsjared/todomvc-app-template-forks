@@ -28,18 +28,45 @@ function sortTodos(a: Todo, b: Todo, sortState: SortState) {
 
 export const useTodoStore = defineStore("todos", {
 	state: (): State => ({
+		// _sourceTodos: [
+		// 	{ checked: false, message: "Eat Food", id: 0, active: true },
+		// 	{
+		// 		checked: true,
+		// 		message: "Look at Noteworthy Trees",
+		// 		id: 1,
+		// 		active: true,
+		// 	},
+		// 	{
+		// 		checked: false,
+		// 		message: "Sleep at a REASONABLE Hour",
+		// 		id: 2,
+		// 		active: true,
+		// 	},
+		// ],
 		_sourceTodos: [
-			{ checked: false, message: "Eat Food", id: 0, active: true },
+			{ checked: false, message: "adding todos!", id: 0, active: true },
 			{
-				checked: true,
-				message: "Look at Noteworthy Trees",
+				checked: false,
+				message: "add saving and persisting data",
 				id: 1,
 				active: true,
 			},
 			{
 				checked: false,
-				message: "Sleep at a REASONABLE Hour",
+				message: "do fancy chevron-ing (CSS)",
 				id: 2,
+				active: true,
+			},
+			{
+				checked: true,
+				message: "figure out sorting",
+				id: 3,
+				active: true,
+			},
+			{
+				checked: true,
+				message: "sorting from chevron button",
+				id: 4,
 				active: true,
 			},
 		],
