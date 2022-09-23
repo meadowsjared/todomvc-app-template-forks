@@ -1,17 +1,18 @@
 <template>
 	<a
-		:class="{ selected: filter === activeValue }"
-		@click="$emit('click', activeValue)"
+		:class="{ selected: active }"
+		@click="$emit('click', label.value)"
 		href="#/"
-		>{{ label }}</a
+		>{{ label.displayText }}</a
 	>
 </template>
 
 <script setup lang="ts">
+import type { Label } from "../domain/Todo";
+
 defineProps<{
-	filter: string;
-	label: string;
-	activeValue: string;
+	label: Label;
+	active: boolean;
 }>();
 
 defineEmits<{
