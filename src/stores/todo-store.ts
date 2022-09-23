@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
-import { SortState } from "../domain/Todo";
 import type Todo from "../domain/Todo";
+import { SortState } from "../domain/Todo";
 
 interface State {
 	_sourceTodos: Todo[];
@@ -10,6 +10,7 @@ interface State {
 }
 
 function sortTodos(a: Todo, b: Todo, sortState: SortState) {
+	// used "guard clauses" instead of if-else statements
 	switch (sortState) {
 		case SortState.ASCENDING:
 			if (a.checked === b.checked) return 0;
@@ -28,21 +29,6 @@ function sortTodos(a: Todo, b: Todo, sortState: SortState) {
 
 export const useTodoStore = defineStore("todos", {
 	state: (): State => ({
-		// _sourceTodos: [
-		// 	{ checked: false, message: "Eat Food", id: 0, active: true },
-		// 	{
-		// 		checked: true,
-		// 		message: "Look at Noteworthy Trees",
-		// 		id: 1,
-		// 		active: true,
-		// 	},
-		// 	{
-		// 		checked: false,
-		// 		message: "Sleep at a REASONABLE Hour",
-		// 		id: 2,
-		// 		active: true,
-		// 	},
-		// ],
 		_sourceTodos: [
 			{ checked: false, message: "adding todos!", id: 0, active: true },
 			{
@@ -58,48 +44,57 @@ export const useTodoStore = defineStore("todos", {
 				active: true,
 			},
 			{
-				checked: true,
-				message: "figure out sorting",
+				checked: false,
+				message: "fix funky active junk",
 				id: 3,
 				active: true,
 			},
 			{
 				checked: true,
-				message: "sorting from chevron button",
+				message: "figure out sorting",
 				id: 4,
 				active: true,
 			},
+			{
+				checked: true,
+				message: "sorting from chevron button",
+				id: 5,
+				active: true,
+			},
 		],
+
 		_displayedTodos: [],
 		_filter: "all",
 		_sort: SortState.UNSORTED,
 	}),
 	getters: {
 		todos: (state: State) => {
-			//sort the results
+			// sort it based on the current sort setting
 			const sortedTodos = state._displayedTodos;
 			sortedTodos.sort((a: Todo, b: Todo) => sortTodos(a, b, state._sort));
-			//filter the results
+
+			// filter the results
 			switch (state._filter) {
-				case "active":
-					return sortedTodos.filter((todo) => todo.active);
-				case "completed":
-					return sortedTodos.filter((todo) => todo.checked);
-				default:
-					return sortedTodos;
+				case "unchecked":
+					return sortedTodos.filter((todo) => !todo.checked); // Active
+				case "checked":
+					return sortedTodos.filter((todo) => todo.checked); // completed
+				default: // all
+					return sortedTodos; // All
 			}
 		},
 		tasksLeft: (state: State) =>
-			state._displayedTodos.filter((todo) => !todo.checked).length,
+			state._displayedTodos.filter((todo) => !todo.checked).length ?? 0,
 		filter: (state: State) => state._filter,
 	},
 	actions: {
 		destroyTodo(todo: Todo) {
 			todo.active = false;
-			// this._displayedTodos[index].active = false;
-			// this._displayedTodos.splice(index, 1);
 		},
 		clearCompleted() {
+			// filter the todo list to only show the unchecked todos
+			// this._displayedTodos = this._sourceTodos.filter((todo) => !todo.checked);
+
 			this._displayedTodos
 				.filter((todo) => todo.checked)
 				.forEach((todo) => {
@@ -120,6 +115,7 @@ export const useTodoStore = defineStore("todos", {
 				(pTodo) => newTodo.id === pTodo.id
 			);
 			this._displayedTodos[index] = newTodo;
+			// update persisted data
 		},
 	},
 });
