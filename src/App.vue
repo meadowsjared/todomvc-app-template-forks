@@ -2,7 +2,13 @@
 	<section class="todoapp">
 		<header class="header">
 			<h1>todos</h1>
-			<input class="new-todo" placeholder="What needs to be done?" autofocus />
+			<input
+				class="new-todo"
+				@keypress.enter="handleAddTodo"
+				placeholder="What needs to be done?"
+				autofocus
+				v-model="newTodo"
+			/>
 		</header>
 		<!-- This section should be hidden by default and shown when there are todos -->
 		<section class="main">
@@ -96,6 +102,7 @@ todoStore.loadData();
 todoStore.tasksLeft;
 let name = "DayCHU";
 let asdf = [1, 2, 3];
+const newTodo = ref("");
 
 const sortState = ref<SortState>(SortState.UNSORTED);
 // const tasksLeft = computed(
@@ -153,6 +160,12 @@ function sortTodos() {
 function updateTodos(todo: Todo) {
 	todoStore.updateTodo(todo);
 }
+function handleAddTodo() {
+	console.log("addTodo", newTodo.value);
+	todoStore.addTodo(newTodo.value);
+	newTodo.value = "";
+}
+
 console.log("hello from app.vue", todoStore.todos);
 </script>
 
