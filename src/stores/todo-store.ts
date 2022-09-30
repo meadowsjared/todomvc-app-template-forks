@@ -44,7 +44,7 @@ export const useTodoStore = defineStore("todos", {
 				active: true,
 			},
 			{
-				checked: false,
+				checked: true,
 				message: "fix funky active junk",
 				id: 3,
 				active: true,

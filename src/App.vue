@@ -7,7 +7,18 @@
 		<!-- This section should be hidden by default and shown when there are todos -->
 		<section class="main">
 			<input id="toggle-all" class="toggle-all" type="checkbox" />
-			<label @click="sortTodos" for="sort-todos"> Sort Todos</label>
+			<label
+				@click="sortTodos"
+				for="sort-todos"
+				:class="{
+					'sort-arrow': true,
+					'sort-arrow-right': sortState === SortState.UNSORTED,
+					'sort-arrow-up': sortState === SortState.ASCENDING,
+					'sort-arrow-down': sortState === SortState.DESCENDING,
+				}"
+			>
+				Sort Todos</label
+			>
 			<ul class="todo-list">
 				<!-- These are here just to show the structure of the list items -->
 				<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
@@ -144,3 +155,18 @@ function updateTodos(todo: Todo) {
 }
 console.log("hello from app.vue", todoStore.todos);
 </script>
+
+<style scoped>
+label.sort-arrow-right::before {
+	transform: rotate(0deg);
+}
+label.sort-arrow-down::before {
+	transform: rotate(90deg);
+}
+label.sort-arrow-up::before {
+	transform: rotate(270deg);
+}
+label.sort-arrow::before {
+	transition: transform 0.3s ease-in-out;
+}
+</style>
