@@ -1,10 +1,12 @@
+import { onValue, set } from "firebase/database";
 import { defineStore } from "pinia";
+import { todosRef } from "../domain/firebase";
 import type Todo from "../domain/Todo";
 import { SortState } from "../domain/Todo";
 
 interface State {
 	_sourceTodos: Todo[];
-	_displayedTodos: Todo[];
+	_displayedTodos: Todo[] | null;
 	_filter: string;
 	_sort: SortState;
 	maxId: number;
@@ -71,6 +73,7 @@ export const useTodoStore = defineStore("todos", {
 	}),
 	getters: {
 		todos: (state: State) => {
+			if (!state._displayedTodos) return;
 			// sort it based on the current sort setting
 			const sortedTodos = state._displayedTodos;
 			sortedTodos.sort((a: Todo, b: Todo) => sortTodos(a, b, state._sort));
@@ -86,25 +89,33 @@ export const useTodoStore = defineStore("todos", {
 			}
 		},
 		tasksLeft: (state: State) =>
-			state._displayedTodos.filter((todo) => !todo.checked).length ?? 0,
+			state._displayedTodos?.filter((todo) => !todo.checked).length ?? 0,
 		filter: (state: State) => state._filter,
 	},
 	actions: {
 		destroyTodo(todo: Todo) {
 			todo.active = false;
+			this.saveTodos();
 		},
 		clearCompleted() {
 			// filter the todo list to only show the unchecked todos
 			// this._displayedTodos = this._sourceTodos.filter((todo) => !todo.checked);
-
-			this._displayedTodos
-				.filter((todo) => todo.checked)
-				.forEach((todo) => {
-					todo.active = false;
-				});
+			if (this._displayedTodos) {
+				this._displayedTodos
+					.filter((todo) => todo.checked)
+					.forEach((todo) => {
+						todo.active = false;
+					});
+				this.saveTodos();
+			}
 		},
 		loadData() {
-			this._displayedTodos = this._sourceTodos;
+			//this._displayedTodos = this._sourceTodos;
+			onValue(todosRef, (snapshot) => {
+				const data = snapshot.val() as Todo[];
+				this._displayedTodos = data.filter((value) => value !== undefined);
+				console.log("this._displayedTodos", this._displayedTodos);
+			});
 		},
 		setFilter(filter: string) {
 			this._filter = filter;
@@ -113,20 +124,32 @@ export const useTodoStore = defineStore("todos", {
 			this._sort = sortState;
 		},
 		updateTodo(newTodo: Todo) {
+			if (!this._displayedTodos) return;
 			const index = this._displayedTodos.findIndex(
 				(pTodo) => newTodo.id === pTodo.id
 			);
 			this._displayedTodos[index] = newTodo;
+			this.saveTodos();
 			// update persisted data
 		},
 		addTodo(newTodo: string) {
 			console.log("adding todo from pinia", newTodo);
-			this._displayedTodos.push({
+			this._displayedTodos?.push({
 				checked: false,
 				message: newTodo,
 				id: this.maxId++,
 				active: true,
 			});
+			this.saveTodos();
+		},
+		saveTodos() {
+			set(todosRef, this._displayedTodos)
+				.then(() => {
+					console.log("data saved successfully");
+				})
+				.catch((error) => {
+					console.warn("error", error);
+				});
 		},
 	},
 });
