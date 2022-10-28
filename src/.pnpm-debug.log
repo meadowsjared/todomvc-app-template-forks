@@ -1,0 +1,368 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 debug pnpm:package-manifest": {
+    "initial": {
+      "scripts": {
+        "dev": "vite"
+      },
+      "private": true,
+      "dependencies": {
+        "pinia": "^2.0.13",
+        "todomvc-app-css": "^2.0.0",
+        "todomvc-common": "^1.0.0",
+        "vue": "^3.2.31"
+      },
+      "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^5.41.0",
+        "@typescript-eslint/parser": "^5.41.0",
+        "@vitejs/plugin-vue": "^2.2.4",
+        "eslint": "^8.26.0",
+        "eslint-plugin-vue": "^9.6.0",
+        "pnpm": "^6.32.2",
+        "typescript": "^4.6.2",
+        "unplugin-auto-import": "^0.4.13",
+        "unplugin-vue-components": "^0.19.3",
+        "vite": "^2.8.6",
+        "vite-plugin-html": "^2.1.1",
+        "vite-plugin-rewrite-all": "^0.1.2",
+        "vue-tsc": "^0.32.1"
+      }
+    },
+    "prefix": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template"
+  },
+  "2 debug pnpm:context": {
+    "currentLockfileExists": true,
+    "storeDir": "C:\\Users\\hisat\\.pnpm-store\\v3",
+    "virtualStoreDir": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template\\node_modules\\.pnpm"
+  },
+  "3 debug pnpm:stage": {
+    "prefix": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "stage": "resolution_started"
+  },
+  "4 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@typescript-eslint/eslint-plugin/5.41.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@typescript-eslint/eslint-plugin",
+      "rawSpec": "^5.41.0"
+    }
+  },
+  "5 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@typescript-eslint/parser/5.41.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@typescript-eslint/parser",
+      "rawSpec": "^5.41.0"
+    }
+  },
+  "6 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/@vitejs/plugin-vue/2.2.4",
+    "wanted": {
+      "dependentId": ".",
+      "name": "@vitejs/plugin-vue",
+      "rawSpec": "^2.2.4"
+    }
+  },
+  "7 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/eslint/8.26.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint",
+      "rawSpec": "^8.26.0"
+    }
+  },
+  "8 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/eslint-plugin-vue/9.6.0",
+    "wanted": {
+      "dependentId": ".",
+      "name": "eslint-plugin-vue",
+      "rawSpec": "^9.6.0"
+    }
+  },
+  "9 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/pnpm/6.32.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "pnpm",
+      "rawSpec": "^6.32.2"
+    }
+  },
+  "10 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/typescript/4.6.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "typescript",
+      "rawSpec": "^4.6.2"
+    }
+  },
+  "11 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/unplugin-auto-import/0.4.20",
+    "wanted": {
+      "dependentId": ".",
+      "name": "unplugin-auto-import",
+      "rawSpec": "^0.4.13"
+    }
+  },
+  "12 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/unplugin-vue-components/0.19.3",
+    "wanted": {
+      "dependentId": ".",
+      "name": "unplugin-vue-components",
+      "rawSpec": "^0.19.3"
+    }
+  },
+  "13 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vite/2.8.6",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vite",
+      "rawSpec": "^2.8.6"
+    }
+  },
+  "14 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vite-plugin-html/2.1.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vite-plugin-html",
+      "rawSpec": "^2.1.1"
+    }
+  },
+  "15 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vite-plugin-rewrite-all/0.1.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vite-plugin-rewrite-all",
+      "rawSpec": "^0.1.2"
+    }
+  },
+  "16 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vue-tsc/0.32.1",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vue-tsc",
+      "rawSpec": "^0.32.1"
+    }
+  },
+  "17 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/pinia/2.0.13",
+    "wanted": {
+      "dependentId": ".",
+      "name": "pinia",
+      "rawSpec": "^2.0.13"
+    }
+  },
+  "18 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/todomvc-app-css/2.4.2",
+    "wanted": {
+      "dependentId": ".",
+      "name": "todomvc-app-css",
+      "rawSpec": "^2.0.0"
+    }
+  },
+  "19 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/todomvc-common/1.0.5",
+    "wanted": {
+      "dependentId": ".",
+      "name": "todomvc-common",
+      "rawSpec": "^1.0.0"
+    }
+  },
+  "20 debug pnpm:_dependency_resolved": {
+    "resolution": "registry.npmjs.org/vue/3.2.31",
+    "wanted": {
+      "dependentId": ".",
+      "name": "vue",
+      "rawSpec": "^3.2.31"
+    }
+  },
+  "21 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@typescript-eslint/parser/5.41.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "22 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@typescript-eslint/parser/5.41.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "23 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vitejs/plugin-vue/2.2.4",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "24 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@vitejs/plugin-vue/2.2.4",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "25 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@typescript-eslint/eslint-plugin/5.41.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "26 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/@typescript-eslint/eslint-plugin/5.41.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "27 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint-plugin-vue/9.6.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "28 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint-plugin-vue/9.6.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "29 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint/8.26.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "30 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/eslint/8.26.0",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "31 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/typescript/4.6.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "32 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/typescript/4.6.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "33 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/unplugin-auto-import/0.4.20",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "34 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/unplugin-auto-import/0.4.20",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "35 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/pnpm/6.32.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "36 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/pnpm/6.32.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "37 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/unplugin-vue-components/0.19.3",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "38 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/unplugin-vue-components/0.19.3",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "39 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite/2.8.6",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "40 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite/2.8.6",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "41 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite-plugin-html/2.1.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "42 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite-plugin-html/2.1.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "43 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite-plugin-rewrite-all/0.1.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "44 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vite-plugin-rewrite-all/0.1.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "45 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue-tsc/0.32.1",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "46 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue-tsc/0.32.1",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "47 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/pinia/2.0.13",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "48 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/pinia/2.0.13",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "49 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/todomvc-app-css/2.4.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "50 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/todomvc-app-css/2.4.2",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "51 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/todomvc-common/1.0.5",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "52 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/todomvc-common/1.0.5",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "53 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue/3.2.31",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "found_in_store"
+  },
+  "54 debug pnpm:progress": {
+    "packageId": "registry.npmjs.org/vue/3.2.31",
+    "requester": "C:\\Users\\hisat\\Desktop\\Code\\todomvc-app-template",
+    "status": "resolved"
+  },
+  "55 error pnpm": {
+    "code": "ERR_PNPM_FETCH_404",
+    "hint": "firebaser is not in the npm registry, or you have no permission to fetch it.\n\nNo authorization header was set for the request.",
+    "request": {
+      "url": "https://registry.npmjs.org/firebaser"
+    },
+    "response": {
+      "size": 0
+    },
+    "pkgName": "firebaser",
+    "pkgsStack": [],
+    "err": {
+      "name": "pnpm",
+      "message": "GET https://registry.npmjs.org/firebaser: Not Found - 404",
+      "code": "ERR_PNPM_FETCH_404",
+      "stack": "pnpm: GET https://registry.npmjs.org/firebaser: Not Found - 404\n    at RetryOperation._fn (C:\\Users\\hisat\\AppData\\Roaming\\npm\\pnpm-global\\5\\node_modules\\.pnpm\\pnpm@6.32.11\\node_modules\\pnpm\\dist\\pnpm.cjs:85815:19)\n    at processTicksAndRejections (node:internal/process/task_queues:96:5)"
+    }
+  }
+}
