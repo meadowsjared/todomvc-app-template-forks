@@ -25,7 +25,7 @@
 			>
 				Sort Todos</label
 			>
-			<ul class="todo-list">
+			<ul v-if="todoStore.todos" class="todo-list">
 				<!-- These are here just to show the structure of the list items -->
 				<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
 				<Todo
@@ -36,7 +36,7 @@
 							todoStore.todos.findIndex((pTodo) => todo.id === pTodo.id)
 						]
 					"
-					@update:modelValue="updateTodos(todo)"
+					@update:modelValue="todosUpdated(todo)"
 					@destroy-todo="destroyTodo(todo)"
 				/>
 			</ul>
@@ -60,6 +60,7 @@
 						>All</a
 					> -->
 					<Button
+						type="button"
 						@click="setFilter"
 						:active="'all' === todoStore.filter"
 						:label="{ displayText: 'All', value: 'all' }"
@@ -68,6 +69,7 @@
 				<li>
 					<!-- <a @click="showActive" href="#/active">Active</a> -->
 					<Button
+						type="button"
 						@click="setFilter"
 						:active="'unchecked' === todoStore.filter"
 						:label="{ displayText: 'Unchecked', value: 'unchecked' }"
@@ -76,6 +78,7 @@
 				<li>
 					<!-- <a @click="showCompleted" href="#/completed">Completed</a> -->
 					<Button
+						type="button"
 						@click="setFilter"
 						:active="'checked' === todoStore.filter"
 						:label="{ displayText: 'Checked', value: 'checked' }"
@@ -83,16 +86,16 @@
 				</li>
 			</ul>
 			<!-- Hidden if no completed items are left ↓ -->
-			<button @click="clearCompleted" class="clear-completed">
+			<button type="button" @click="clearCompleted" class="clear-completed">
 				Clear completed
 			</button>
 		</footer>
 	</section>
-	<div @click="showChecked">{{ todoStore.todos.length }}</div>
+	<div @click="showChecked">{{ todoStore.todos?.length }}</div>
 </template>
 
 <script setup lang="ts">
-import type { Ref } from "vue";
+//import type { Ref } from "vue";
 import type Todo from "./domain/Todo";
 import { SortState } from "./domain/Todo";
 import { useTodoStore } from "./stores/todo-store";
@@ -157,7 +160,7 @@ function sortTodos() {
 	}
 	todoStore.setSort(sortState.value);
 }
-function updateTodos(todo: Todo) {
+function todosUpdated(todo: Todo) {
 	todoStore.updateTodo(todo);
 }
 function handleAddTodo() {
