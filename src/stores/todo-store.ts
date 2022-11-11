@@ -158,6 +158,9 @@ export const useTodoStore = defineStore("todos", {
 			});
 			this.saveTodos();
 		},
+
+		//saveAllTodos
+
 		saveTodos() {
 			set(todosRef, this._displayedTodos)
 				.then(() => {
