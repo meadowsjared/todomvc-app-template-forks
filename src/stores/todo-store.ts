@@ -69,7 +69,7 @@ export const useTodoStore = defineStore("todos", {
 		_displayedTodos: [],
 		_filter: "all",
 		_sort: SortState.UNSORTED,
-		maxId: 50, //fix this
+		maxId: 0,
 	}),
 	getters: {
 		todos: (state: State) => {
@@ -77,6 +77,7 @@ export const useTodoStore = defineStore("todos", {
 			// sort it based on the current sort setting
 			const sortedTodos = state._displayedTodos;
 			sortedTodos.sort((a: Todo, b: Todo) => sortTodos(a, b, state._sort));
+			state.maxId === 0 && (state.maxId = sortedTodos.length);
 
 			// filter the results
 			switch (state._filter) {
