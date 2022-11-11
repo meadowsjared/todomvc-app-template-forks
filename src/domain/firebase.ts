@@ -20,4 +20,4 @@ const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 const todosRef = ref(db, "todos");
 
-export { todosRef };
+export { todosRef, db };
