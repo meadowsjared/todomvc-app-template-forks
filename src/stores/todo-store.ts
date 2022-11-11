@@ -1,6 +1,6 @@
 import { onValue, set, ref, remove } from "firebase/database";
 import { defineStore } from "pinia";
-import { todosRef } from "../domain/firebase";
+import { todosRef, db } from "../domain/firebase";
 import type Todo from "../domain/Todo";
 import { SortState } from "../domain/Todo";
 
