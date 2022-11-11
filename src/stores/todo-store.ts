@@ -1,4 +1,4 @@
-import { onValue, set } from "firebase/database";
+import { onValue, set, ref, remove } from "firebase/database";
 import { defineStore } from "pinia";
 import { todosRef } from "../domain/firebase";
 import type Todo from "../domain/Todo";
@@ -77,7 +77,7 @@ export const useTodoStore = defineStore("todos", {
 			// sort it based on the current sort setting
 			const sortedTodos = state._displayedTodos;
 			sortedTodos.sort((a: Todo, b: Todo) => sortTodos(a, b, state._sort));
-			state.maxId === 0 && (state.maxId = sortedTodos.length);
+			3;
 
 			// filter the results
 			switch (state._filter) {
@@ -95,8 +95,16 @@ export const useTodoStore = defineStore("todos", {
 	},
 	actions: {
 		destroyTodo(todo: Todo) {
+			console.log("destroying todo", todo);
+			const todoRef = ref(db, "todos/" + todo.id);
+			remove(todoRef)
+				.then(() => {
+					console.log("data saved successfully");
+				})
+				.catch((error) => {
+					console.warn("error", error);
+				});
 			todo.active = false;
-			this.saveTodos();
 		},
 		clearCompleted() {
 			// filter the todo list to only show the unchecked todos
@@ -116,6 +124,13 @@ export const useTodoStore = defineStore("todos", {
 				const data = snapshot.val() as Todo[];
 				this._displayedTodos = data.filter((value) => value !== undefined);
 				console.log("this._displayedTodos", this._displayedTodos);
+				const highestId = this._displayedTodos.reduce((canId, todo) => {
+					if (todo.id > canId) return todo.id;
+					return canId;
+				}, 0);
+				console.log({ highestId });
+				this.maxId = highestId + 1;
+				console.log("this.maxId", this.maxId);
 			});
 		},
 		setFilter(filter: string) {
