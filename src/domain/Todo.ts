@@ -3,7 +3,6 @@ export default interface Todo {
 	checked: boolean;
 	message: string;
 	id: number;
-	active: boolean;
 	key: number;
 	//optional
 	foo?: boolean;
