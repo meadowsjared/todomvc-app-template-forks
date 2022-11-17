@@ -33,41 +33,36 @@ function sortTodos(a: Todo, b: Todo, sortState: SortState) {
 export const useTodoStore = defineStore("todos", {
 	state: (): State => ({
 		_sourceTodos: [
-			{ checked: false, message: "adding todos!", id: 0, key: 0, active: true },
+			{ checked: false, message: "adding todos!", id: 0, key: 0 },
 			{
 				checked: false,
 				message: "add saving and persisting data",
 				id: 1,
 				key: 1,
-				active: true,
 			},
 			{
 				checked: false,
 				message: "do fancy chevron-ing (CSS)",
 				id: 2,
 				key: 2,
-				active: true,
 			},
 			{
 				checked: true,
 				message: "fix funky active junk",
 				id: 3,
 				key: 3,
-				active: true,
 			},
 			{
 				checked: true,
 				message: "figure out sorting",
 				id: 4,
 				key: 4,
-				active: true,
 			},
 			{
 				checked: true,
 				message: "sorting from chevron button",
 				id: 5,
 				key: 5,
-				active: true,
 			},
 		],
 
@@ -109,15 +104,12 @@ export const useTodoStore = defineStore("todos", {
 				.catch((error) => {
 					console.warn("error", error);
 				});
-			todo.active = false;
 		},
 		clearCompleted() {
 			if (this._displayedTodos) {
-				this._displayedTodos
-					.filter((todo) => todo.checked)
-					.forEach((todo) => {
-						todo.active = false;
-					});
+				this._displayedTodos = this._displayedTodos.filter(
+					(todo) => !todo.checked
+				);
 				this.saveAllTodos();
 			}
 		},
@@ -170,6 +162,9 @@ export const useTodoStore = defineStore("todos", {
 		},
 
 		saveAllTodos() {
+			this._displayedTodos?.forEach((todo, index) => {
+				todo.key = index;
+			});
 			set(todosRef, this._displayedTodos)
 				.then(() => {
 					console.log("data saved successfully");
