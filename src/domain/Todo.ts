@@ -4,6 +4,7 @@ export default interface Todo {
 	message: string;
 	id: number;
 	active: boolean;
+	key: number;
 	//optional
 	foo?: boolean;
 }
