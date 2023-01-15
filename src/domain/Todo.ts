@@ -18,3 +18,12 @@ export enum SortState {
 	ASCENDING,
 	DESCENDING,
 }
+export function newOnboardingTodo(message: string, id: number): Todo {
+	const todo: Todo = {
+		checked: false,
+		message,
+		id,
+		key: id,
+	};
+	return todo;
+}
