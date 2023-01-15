@@ -5,7 +5,6 @@ import type Todo from "../domain/Todo";
 import { SortState } from "../domain/Todo";
 
 interface State {
-	_sourceTodos: Todo[];
 	_displayedTodos: Todo[] | null;
 	_filter: string;
 	_sort: SortState;
@@ -32,40 +31,6 @@ function sortTodos(a: Todo, b: Todo, sortState: SortState) {
 
 export const useTodoStore = defineStore("todos", {
 	state: (): State => ({
-		_sourceTodos: [
-			{ checked: false, message: "adding todos!", id: 0, key: 0 },
-			{
-				checked: false,
-				message: "add saving and persisting data",
-				id: 1,
-				key: 1,
-			},
-			{
-				checked: false,
-				message: "do fancy chevron-ing (CSS)",
-				id: 2,
-				key: 2,
-			},
-			{
-				checked: true,
-				message: "fix funky active junk",
-				id: 3,
-				key: 3,
-			},
-			{
-				checked: true,
-				message: "figure out sorting",
-				id: 4,
-				key: 4,
-			},
-			{
-				checked: true,
-				message: "sorting from chevron button",
-				id: 5,
-				key: 5,
-			},
-		],
-
 		_displayedTodos: [],
 		_filter: "all",
 		_sort: SortState.UNSORTED,
@@ -145,11 +110,10 @@ export const useTodoStore = defineStore("todos", {
 			this.saveTodo(newTodo);
 		},
 		addTodo(newTodo: string) {
-			const todo = {
+			const todo: Todo = {
 				checked: false,
 				message: newTodo,
 				id: this.maxId++,
-				active: true,
 				key:
 					(this._displayedTodos?.reduce((highestKey, todo) => {
 						if (todo.key > highestKey) return todo.key;
