@@ -1,8 +1,8 @@
-import { onValue, set, ref, remove } from "firebase/database";
+import { onValue, set, ref, remove, DataSnapshot } from "firebase/database";
 import { defineStore } from "pinia";
 import { todosRef, db } from "../domain/firebase";
 import type Todo from "../domain/Todo";
-import { SortState } from "../domain/Todo";
+import { newOnboardingTodo, SortState } from "../domain/Todo";
 
 interface State {
 	_displayedTodos: Todo[] | null;
@@ -27,6 +27,26 @@ function sortTodos(a: Todo, b: Todo, sortState: SortState) {
 			if (a.id > b.id) return 1;
 			return -1;
 	}
+}
+
+function loadTodosFromSnapshot(snapshot: DataSnapshot): Todo[] {
+	const data: Todo[] | undefined =
+		snapshot.val() &&
+		Object.entries(snapshot.val() as { [key: number]: Todo }).map(
+			([key, todo]) => {
+				todo.key = parseInt(key);
+				return todo;
+			}
+		);
+	return data?.filter((value) => value !== undefined) ?? [];
+}
+
+function getOnboardingTodos(): Todo[] {
+	const todos: Todo[] = [
+		newOnboardingTodo("Welcome", 0),
+		newOnboardingTodo("Sample", 1),
+	];
+	return todos;
 }
 
 export const useTodoStore = defineStore("todos", {
@@ -80,11 +100,7 @@ export const useTodoStore = defineStore("todos", {
 		},
 		loadData() {
 			onValue(todosRef, (snapshot) => {
-				const data = (snapshot.val() as Todo[]).map((todo, index) => {
-					todo.key = index;
-					return todo;
-				});
-				this._displayedTodos = data.filter((value) => value !== undefined);
+				this._displayedTodos = loadTodosFromSnapshot(snapshot);
 				console.log("this._displayedTodos", this._displayedTodos);
 				const highestId = this._displayedTodos.reduce((canId, todo) => {
 					if (todo.id > canId) return todo.id;
@@ -146,6 +162,10 @@ export const useTodoStore = defineStore("todos", {
 				.catch((error) => {
 					console.warn("error", error);
 				});
+		},
+		loadOnboardingTodos() {
+			this._displayedTodos = getOnboardingTodos();
+			this.saveAllTodos();
 		},
 	},
 });
