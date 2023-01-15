@@ -6,6 +6,7 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Button: typeof import('./components/Button.vue')['default']
+    EmptyTodos: typeof import('./components/EmptyTodos.vue')['default']
     Todo: typeof import('./components/Todo.vue')['default']
   }
 }
