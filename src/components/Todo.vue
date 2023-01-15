@@ -3,12 +3,13 @@
 		<div class="view">
 			<input
 				class="toggle"
+				title="Toggle Checkbox"
 				type="checkbox"
 				v-model="props.modelValue.checked"
 				@update:modelValue="toggleChecked"
 			/>
 			<label> <input type="text" v-model="message" /> </label>
-			<button class="destroy" @click="destroy"></button>
+			<button class="destroy" title="Delete Todo" @click="destroy"></button>
 		</div>
 		<input class="edit" value="Create a TodoMVC template" />
 	</li>
@@ -48,3 +49,10 @@ function destroy() {
 	emit("destroyTodo");
 }
 </script>
+
+<style scoped>
+.toggle,
+.destroy {
+	cursor: pointer;
+}
+</style>
