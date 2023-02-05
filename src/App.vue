@@ -113,7 +113,6 @@ const sortState = ref<SortState>(SortState.UNSORTED);
 // const tasksLeft = computed(
 // 	() => todoArray.value.filter((todo) => !todo.checked).length ?? 0
 // );
-//
 
 // watch(
 // 	() => tasksLeft.value,

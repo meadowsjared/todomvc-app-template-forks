@@ -1,5 +1,5 @@
 <template>
-	<li :class="{ completed: checked }">
+	<li>
 		<div class="view">
 			<input
 				class="toggle"
@@ -8,7 +8,9 @@
 				v-model="props.modelValue.checked"
 				@update:modelValue="toggleChecked"
 			/>
-			<label> <input type="text" v-model="message" /> </label>
+			<label>
+				<input type="text" :class="{ completed: checked }" v-model="message" />
+			</label>
 			<button class="destroy" title="Delete Todo" @click="destroy"></button>
 		</div>
 		<input class="edit" value="Create a TodoMVC template" />
