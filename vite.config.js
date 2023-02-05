@@ -12,6 +12,7 @@ export default defineConfig(({ mode }) => {
   const isSandbox = true;
 
   return {
+		base: "",
     plugins: [
       vue(),
       components({

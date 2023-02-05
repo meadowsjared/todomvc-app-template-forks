@@ -7,7 +7,7 @@ specifiers:
   eslint: ^8.26.0
   eslint-plugin-vue: ^9.6.0
   firebase: ^9.13.0
-  pinia: ^2.0.13
+  pinia: ^2.0.30
   pnpm: ^6.32.2
   todomvc-app-css: ^2.0.0
   todomvc-common: ^1.0.0
@@ -22,7 +22,7 @@ specifiers:
 
 dependencies:
   firebase: 9.13.0
-  pinia: 2.0.13_typescript@4.6.2+vue@3.2.31
+  pinia: 2.0.30_typescript@4.6.2+vue@3.2.31
   todomvc-app-css: 2.4.2
   todomvc-common: 1.0.5
   vue: 3.2.31
@@ -961,8 +961,8 @@ packages:
       '@vue/shared': 3.2.31
     dev: false
 
-  /@vue/devtools-api/6.1.4:
-    resolution: {integrity: sha512-IiA0SvDrJEgXvVxjNkHPFfDx6SXw0b/TUkqMcDZWNg9fnCAHbTpoo59YfJ9QLFkwa3raau5vSlRVzMSLDnfdtQ==}
+  /@vue/devtools-api/6.5.0:
+    resolution: {integrity: sha512-o9KfBeaBmCKl10usN4crU53fYtC1r7jJwdGKjPT24t348rHxgfpZ0xL3Xm/gLUYnc0oTp8LAmrxOeLyu6tbk2Q==}
     dev: false
 
   /@vue/reactivity-transform/3.2.31:
@@ -2388,8 +2388,8 @@ packages:
     engines: {node: '>=8.6'}
     dev: true
 
-  /pinia/2.0.13_typescript@4.6.2+vue@3.2.31:
-    resolution: {integrity: sha512-B7rSqm1xNpwcPMnqns8/gVBfbbi7lWTByzS6aPZ4JOXSJD4Y531rZHDCoYWBwLyHY/8hWnXljgiXp6rRyrofcw==}
+  /pinia/2.0.30_typescript@4.6.2+vue@3.2.31:
+    resolution: {integrity: sha512-q6DUmxWwe/mQgg+55QQjykpKC+aGeGdaJV3niminl19V08dE+LRTvSEuqi6/NLSGCKHI49KGL6tMNEOssFiMyA==}
     peerDependencies:
       '@vue/composition-api': ^1.4.0
       typescript: '>=4.4.4'
@@ -2400,7 +2400,7 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@vue/devtools-api': 6.1.4
+      '@vue/devtools-api': 6.5.0
       typescript: 4.6.2
       vue: 3.2.31
       vue-demi: 0.12.5_vue@3.2.31
