@@ -1,6 +1,12 @@
 {
   "scripts": {
-    "dev": "vite"
+    "dev": "vite",
+    "lint": "eslint --ext .vue,.ts,.js src",
+    "build": "vite build",
+    "deploy-gh": "sh deploy.sh",
+    "check": "run-s check:* lint",
+    "check:vue": "vue-tsc --noEmit",
+    "check:eslint": "eslint src"
   },
   "private": true,
   "dependencies": {
