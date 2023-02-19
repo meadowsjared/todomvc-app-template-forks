@@ -37,7 +37,7 @@
 							todoStore.todos.findIndex((pTodo) => todo.id === pTodo.id)
 						]
 					"
-					@update:modelValue="todosUpdated(todo)"
+					@update:model-value="todosUpdated(todo)"
 					@destroy-todo="destroyTodo(todo)"
 				/>
 				<EmptyTodos v-if="todoStore.todos.length === 0" />
