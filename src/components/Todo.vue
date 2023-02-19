@@ -6,7 +6,7 @@
 				title="Toggle Checkbox"
 				type="checkbox"
 				v-model="props.modelValue.checked"
-				@update:modelValue="toggleChecked"
+				@update:model-value="toggleChecked"
 			/>
 			<label>
 				<input type="text" :class="{ completed: checked }" v-model="message" />
@@ -27,6 +27,18 @@ const emit = defineEmits(["update:modelValue", "destroyTodo"]);
 
 const checked = ref(props.modelValue.checked);
 const message = ref(props.modelValue.message);
+
+watch(
+	() => props.modelValue,
+	(newVal) => {
+		if (newVal.checked !== checked.value) {
+			checked.value = newVal.checked;
+		}
+		if (newVal.message !== message.value) {
+			message.value = newVal.message;
+		}
+	}
+);
 
 watch(
 	() => message.value,
@@ -56,5 +68,9 @@ function destroy() {
 .toggle,
 .destroy {
 	cursor: pointer;
+}
+.completed {
+	color: #949494;
+	text-decoration: line-through;
 }
 </style>
