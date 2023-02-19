@@ -62,7 +62,6 @@ export const useTodoStore = defineStore("todos", {
 			// sort it based on the current sort setting
 			const sortedTodos = state._displayedTodos;
 			sortedTodos.sort((a: Todo, b: Todo) => sortTodos(a, b, state._sort));
-			3;
 
 			// filter the results
 			switch (state._filter) {
