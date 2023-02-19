@@ -1,7 +1,7 @@
 <template>
 	<section class="todoapp">
 		<header class="header">
-			<h1>todos</h1>
+			<h1>Todos</h1>
 			<input
 				class="new-todo"
 				@keypress.enter="handleAddTodo"
@@ -93,7 +93,6 @@
 			</button>
 		</footer>
 	</section>
-	<div @click="showChecked">{{ todoStore.todos?.length }}</div>
 </template>
 
 <script setup lang="ts">
