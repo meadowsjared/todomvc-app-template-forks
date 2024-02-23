@@ -1,7 +1,7 @@
 <template>
+	<h1>Todos</h1>
 	<section class="todoapp">
 		<header class="header">
-			<h1>Todos</h1>
 			<input
 				class="new-todo"
 				@keypress.enter="handleAddTodo"
