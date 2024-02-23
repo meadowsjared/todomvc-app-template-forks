@@ -65,12 +65,18 @@ function destroy() {
 </script>
 
 <style scoped>
-.toggle,
-.destroy {
+.toggle .destroy {
 	cursor: pointer;
 }
+
 .completed {
 	color: #949494;
 	text-decoration: line-through;
+}
+
+@media screen and (max-width: 700px) {
+	button.destroy {
+		display: flex;
+	}
 }
 </style>

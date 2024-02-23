@@ -10,18 +10,47 @@ remove this file if not
 
 */
 
-
 input {
 	width: 100%;
 	border: none;
 	font-size: 24px;
 }
 
-.view {
-	margin-right: 2rem;
+/** begin: fix margin caused by previous position:absolute; on destroy button */
+.todo-list li:hover {
+	flex-wrap: unset;
+	padding-right: 0;
 }
 
-/** begin: fix margin caused by previous position:absolute; on header */
+.todo-list li .destroy, .todo-list li .destroy {
+	position: static;
+	justify-content: center;
+	align-items: center;
+}
+
+.todo-list li:focus-within .destroy, .todo-list li:hover .destroy {
+	display: flex !important;
+}
+
+.todo-list li label {
+	padding-right: 4px;
+}
+
+.todo-list li .destroy::after {
+	display: flex;
+	align-items: center;
+}
+
+.view {
+	display: flex;
+}
+
+.view label {
+	flex-grow: 1;
+}
+/** end: fix margin caused by previous position:absolute; on destroy button */
+
+/** begin: fix margin caused by previous position:absolute; on  header */
 h1 {
 	font-size: 80px;
 	font-weight: 200;
